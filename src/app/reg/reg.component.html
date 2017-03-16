@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+            <input type="email" placeholder="email" formControlName="email" class="form-control input-lg">
+            <div [hidden]="emailValid || loginPristine" class="error-message">Email is invalid</div>
+            <div *ngIf="serverErrorMessages.loginErrors">
+                <div class="error-message" *ngFor="let error of serverErrorMessages.loginErrors">
+                    {{error}}
+                </div>
+            </div>
+
+            <input type="text" placeholder="full name" formControlName="fullName" class="form-control input-lg">
+            <div *ngIf="serverErrorMessages.fullNameErrors">
+                <div class="error-message" *ngFor="let error of serverErrorMessages.fullNameErrors">
+                    {{error}}
+                </div>
+            </div>
+            <div formArrayName="passwords" class="form-group">
+                <input type="password" placeholder="password" formControlName="0" class="form-control input-lg">
+
+                <div *ngIf="serverErrorMessages.passwordErrors">
+                    <div class="error-message" *ngFor="let error of serverErrorMessages.passwordErrors">
+                        {{error}}
+                    </div>
+                </div>
+                <div [hidden]="passwordMatched" class="error-message">Password must contain minimum 6 characters: at least 1 alphabet and 1 number</div>
+
+                <input type="password" placeholder="repeat password" formControlName="1" class="form-control input-lg">
+
+                <div *ngIf="serverErrorMessages.confirmPasswordErrors">
+                    <div class="error-message" *ngFor="let error of serverErrorMessages.confirmPasswordErrors">
+                        {{error}}
+                    </div>
+                </div>
+
+                <div [hidden]="passwordsMatched || repeatPristine" class="error-message">Passwords do not match</div>
+
+            </div>
+
+            <button type="button" (click)="signIn()" class="btn btn-dark btn-lg" [disabled]="!registerForm.valid">Register</button>
+        </form>
+    </div>
+</div>

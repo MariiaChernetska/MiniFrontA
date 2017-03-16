@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="pull-right sorting-bar">
+                Sort by:
+                <span (click)="sortByRating()">rating</span> |
+                <span (click)="sortByDate()">date</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-3 one-video" *ngFor="let video of videosObj.videosArray">
+
+            <div class="image-block">
+                <img src="{{apiHostIn+video.screenShot}}" class="img-responsive" [alt]="video.title">
+                <div class="rate-line">
+                    <rating [(ngModel)]="video.rating" [readonly]="true"></rating>
+                    <span>{{video.ratingsAmount}} <i class="glyphicon glyphicon-user"></i></span>
+
+                </div>
+
+            </div>
+
+            <div class="descr">
+                <a [routerLink]="['/player']" [queryParams]="{ videoId: video.id }" class="name">{{video.title}}</a>
+                <p class="author ">Added by: {{video.userName}}</p>
+
+
+                <div class="date">{{video.dateAdded | date:'longDate'}}</div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row" [ngClass]="{'hidden': !showPagination}">
+        <div class="col-sm-12">
+            <nav aria-label="Page navigation" class="paginator">
+                <ul class="pagination">
+                    <li>
+                        <a aria-label="First" (click)="setNum(1)">
+                            <span aria-hidden="true">First</span>
+                        </a>
+                    </li>
+                    <li *ngIf="from != 1">
+                        <a aria-label="Previous block" (click)="setNum(from-10)">
+                            <span aria-hidden="true">{{from-10}}..{{from-1}}</span>
+                        </a>
+                    </li>
+                    <li *ngIf="pageNum != 1">
+                        <a (click)="setNum(pageNum-1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let pageButt of pagesArray" [ngClass]="{active: pageButt==pageNum}" (click)="setNum(pageButt)">
+                        <a>{{pageButt}}</a>
+
+                    </li>
+
+                    <li *ngIf="pageNum != videosObj.pagesAmount">
+                        <a aria-label="Next" (click)="setNum(pageNum+1)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li *ngIf="to != videosObj.pagesAmount">
+                        <a aria-label="Next block" (click)="setNum(from+10)">
+                            <span aria-hidden="true">{{from+10}}..{{to+10> videosObj.pagesAmount? videosObj.pagesAmount:to+10}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a aria-label="Last" (click)="setNum(videosObj.pagesAmount)">
+                            <span aria-hidden="true">Last</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+</div>

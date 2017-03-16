@@ -1,0 +1,45 @@
+<div class="">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+
+            <video class="video-player" height="300" controls="controls" poster="{{apiHost+videoRes.screenShot}}" *ngIf="changeDetected">
+                <source src="{{apiHost+videoRes.path}}">
+            </video>
+            <h4 class="video-title">{{videoRes.title}}</h4>
+            <p class="video-descr">{{videoRes.description}}</p>
+            <rating [(ngModel)]="videoRes.rating" [readonly]="true"></rating>
+            <p class="author pull-right">Added by: {{videoRes.userName}}</p>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div *ngIf="showCommentForm">
+                <rating [(ngModel)]="starsCount"></rating>
+
+                <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+
+                    <textarea name="" id="" class="form-control" formControlName="comment"></textarea>
+                    <!--input type="number" formControlName="rating" [disabled]="userName !== undefined"-->
+
+                    <button type="submit" class="btn btn-dark btn-lg" [disabled]="!commentForm.valid">Send comment</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="row top20">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="panel panel-default" *ngFor="let comment of videoRes.ratings">
+                <div class="panel-body">
+                    {{comment.comment}}
+                </div>
+                <div class="panel-footer comment-footer">{{comment.userName}}
+                    <rating [(ngModel)]="comment.rating" class="comment-rating" [readonly]="true"></rating>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

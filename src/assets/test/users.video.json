@@ -1,0 +1,37 @@
+[{
+        "id": "0",
+        "title": "Very long and nice name of coool video with high rating, but we need even bigger name for test",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "3",
+        "userName": "John Doe",
+        "ratingsAmount": "5"
+    },
+    {
+        "id": "1",
+        "title": "Very Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "4",
+        "userName": "John Doe",
+        "ratingsAmount": "5"
+    },
+    {
+        "id": "2",
+        "title": "Best Video",
+        "path": "http://bgd.vntu.edu.ua/assets/files/video/energoforma.mp4",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "5",
+        "userName": "John Doe",
+        "ratingsAmount": "5"
+    },
+    {
+        "id": "3",
+        "title": "Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "3",
+        "userName": "John Doe",
+        "ratingsAmount": "5"
+    }
+]

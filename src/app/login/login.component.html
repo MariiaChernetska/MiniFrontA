@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="register-form">
+            <div class="form-group">
+                <input type="email" placeholder="email" value="a@a.a" name="login" formControlName="login" class="form-control input-lg">
+                <input type="password" value="P@ssw0rd" name="password" placeholder="password" formControlName="password" class="form-control input-lg">
+
+                <div class="error-message" *ngFor="let message of errorMessage">{{message}}</div>
+            </div>
+
+            <button type="submit" class="btn btn-dark btn-lg" [disabled]="!loginForm.valid">Log In</button>
+
+        </form>
+    </div>
+</div>

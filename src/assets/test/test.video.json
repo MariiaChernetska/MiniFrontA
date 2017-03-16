@@ -1,0 +1,102 @@
+[{
+        "id": "0",
+        "title": "Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "3",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2017-02-09T13:42:16.349Z"
+    },
+    {
+        "id": "1",
+        "title": "Very Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "4",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-12-19T13:42:16.349Z"
+    },
+    {
+        "id": "2",
+        "title": "Best Video",
+        "path": "http://bgd.vntu.edu.ua/assets/files/video/energoforma.mp4",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "5",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-11-19T13:42:16.349Z"
+    },
+    {
+        "id": "3",
+        "title": "Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "3",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-10-19T13:42:16.349Z"
+    },
+    {
+        "id": "4",
+        "title": "Very Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "4",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+
+        "dateAdded": "2016-09-07T13:42:16.349Z"
+    },
+    {
+        "id": "5",
+        "title": "Best Video",
+        "path": "http://bgd.vntu.edu.ua/assets/files/video/energoforma.mp4",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "5",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-12-05T13:42:16.349Z"
+    },
+    {
+        "id": "6",
+        "title": "Best Video",
+        "path": "http://bgd.vntu.edu.ua/assets/files/video/energoforma.mp4",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "5",
+        "userName": "John Doe 2013",
+        "ratingsAmount": "5",
+        "dateAdded": "2013-02-09T13:42:16.349Z"
+    },
+    {
+        "id": "7",
+        "title": "Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "3",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-03-02T13:42:16.349Z"
+    },
+    {
+        "id": "8",
+        "title": "Very Nice Video",
+        "path": "https://vk.com/video?z=video52816753_456239045%2Fpl_cat_updates",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "4",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2016-04-08T13:42:16.349Z"
+    },
+    {
+        "id": "9",
+        "title": "Best Video",
+        "path": "http://bgd.vntu.edu.ua/assets/files/video/energoforma.mp4",
+        "screenshotPath": "assets/img/cat.jpg",
+        "rating": "5",
+        "userName": "John Doe",
+        "ratingsAmount": "5",
+        "dateAdded": "2017-04-04T13:42:16.349Z"
+    }
+]

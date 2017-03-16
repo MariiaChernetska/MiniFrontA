@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="owl-carousel owl-theme">
+                <div class="one-video" *ngFor="let video of usersVideos">
+
+                    <div class="image-block">
+                        <img src="{{apiHostIn+video.screenShot}}" class="img-responsive" [alt]="video.title">
+                        <div class="rate-line">
+                            <rating [(ngModel)]="video.rating" [readonly]="true"></rating>
+                            <span>{{video.ratingsAmount}} marks</span>
+                        </div>
+                    </div>
+                    <div class="descr">
+                        <a [routerLink]="['/player']" [queryParams]="{ videoId: video.id }" class="name">{{video.title}}</a>
+                        <p class="author ">Added by: {{video.userName}}</p>
+
+
+                        <div class="date">{{video.dateAdded | date:'longDate'}}</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <button [ngClass]="{'btn': true, 'btn-dark': true, 'hidden': loadMore}" (click)="loadAndAdd()">Load more</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <p class="bg-primary load-success">Your video has been uploaded successfully</p>
+            <div class="floatingCirclesG loader">
+                <div class="f_circleG frotateG_01"></div>
+                <div class="f_circleG frotateG_02"></div>
+                <div class="f_circleG frotateG_03"></div>
+                <div class="f_circleG frotateG_04"></div>
+                <div class="f_circleG frotateG_05"></div>
+                <div class="f_circleG frotateG_06"></div>
+                <div class="f_circleG frotateG_07"></div>
+                <div class="f_circleG frotateG_08"></div>
+            </div>
+            <form class="video-upload-form" name="form1" id="hi" enctype="multipart/form-data" (ngSubmit)="sendVideo()">
+
+
+                <input id="uploadFile" placeholder="File name will be here" class="upload form-control input-lg" disabled="disabled" accept="video/mp4" required/>
+                <div class="fileUpload btn btn-dark">
+                    <span>Choose file</span>
+                    <input id="uploadBtn" type="file" class="upload form-control input-lg" accept="video/mp4" required/>
+                </div>
+
+                <input type="text" placeholder="title" name="title" id="title" class="form-control input-lg" required>
+                <textarea placeholder="description" name="description" id="descr" class="form-control input-lg" required></textarea>
+                <div class="error-message">{{error}}</div>
+
+                <button class="btn btn-dark top20" type="submit">Save</button>
+            </form>
+        </div>
+
+
+        <!--form name="form1" method="post" enctype="multipart/form-data" (ngSubmit)="Send()">
+            <div>
+                <label for="caption">Image Caption</label>
+                <input name="caption" type="text" id="#file" />
+            </div>
+            <div>
+                <label for="image1">Image File</label>
+                <input name="image1" type="file" />
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        </form-->
+    </div>
+</div>
