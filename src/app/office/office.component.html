@@ -1,34 +1,37 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <div class="owl-carousel owl-theme">
-                <div class="one-video" *ngFor="let video of usersVideos">
+            <div class="carousel-height">
+                <div class="owl-carousel owl-theme">
+                    <div class="one-video" *ngFor="let video of usersVideos">
 
-                    <div class="image-block">
-                        <img src="{{apiHostIn+video.screenShot}}" class="img-responsive" [alt]="video.title">
-                        <div class="rate-line">
-                            <rating [(ngModel)]="video.rating" [readonly]="true"></rating>
-                            <span>{{video.ratingsAmount}} marks</span>
+                        <div class="image-block">
+                            <img src="{{apiHostIn+video.screenShot}}" class="img-responsive" [alt]="video.title">
+                            <div class="rate-line">
+                                <rating [(ngModel)]="video.rating" [readonly]="true"></rating>
+                                <span>{{video.ratingsAmount}} marks</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="descr">
-                        <a [routerLink]="['/player']" [queryParams]="{ videoId: video.id }" class="name">{{video.title}}</a>
-                        <p class="author ">Added by: {{video.userName}}</p>
+                        <div class="descr">
+                            <a [routerLink]="['/player']" [queryParams]="{ videoId: video.id }" class="name">{{video.title}}</a>
+                            <p class="author ">Added by: {{video.userName}}</p>
 
 
-                        <div class="date">{{video.dateAdded | date:'longDate'}}</div>
+                            <div class="date">{{video.dateAdded | date:'longDate'}}</div>
 
 
+                        </div>
                     </div>
                 </div>
             </div>
+
             <button [ngClass]="{'btn': true, 'btn-dark': true, 'hidden': loadMore}" (click)="loadAndAdd()">Load more</button>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-            <p class="bg-primary load-success">Your video has been uploaded successfully</p>
-            <div class="floatingCirclesG loader">
+            <p class="bg-primary load-success" *ngIf="successMess">Your video has been uploaded successfully</p>
+            <div class="floatingCirclesG" *ngIf="loader">
                 <div class="f_circleG frotateG_01"></div>
                 <div class="f_circleG frotateG_02"></div>
                 <div class="f_circleG frotateG_03"></div>
@@ -38,7 +41,8 @@
                 <div class="f_circleG frotateG_07"></div>
                 <div class="f_circleG frotateG_08"></div>
             </div>
-            <form class="video-upload-form" name="form1" id="hi" enctype="multipart/form-data" (ngSubmit)="sendVideo()">
+
+            <!--form class="video-upload-form" name="form1" id="hi" enctype="multipart/form-data" (ngSubmit)="sendVideo()">
 
 
                 <input id="uploadFile" placeholder="File name will be here" class="upload form-control input-lg" disabled="disabled" accept="video/mp4" required/>
@@ -52,7 +56,26 @@
                 <div class="error-message">{{error}}</div>
 
                 <button class="btn btn-dark top20" type="submit">Save</button>
+            </form-->
+
+            <form name="form1" [formGroup]="videoForm" class="video-upload-form" enctype="multipart/form-data">
+
+                <div>
+                    <input name="image" type="file" formControlName="videoFile" class="upload form-control input-lg" (change)="fileChanged($event)" />
+                </div>
+                <div>
+
+                    <input name="title" placeholder="title" class="upload form-control input-lg" type="text" formControlName="title" />
+                </div>
+                <div>
+
+                    <textarea name="title" placeholder="description" class="upload form-control input-lg" type="text" formControlName="descr"></textarea>
+                </div>
+                <div>
+                    <button class="btn btn-dark top20" (click)="Send()" type="button">Save</button>
+                </div>
             </form>
+
         </div>
 
 

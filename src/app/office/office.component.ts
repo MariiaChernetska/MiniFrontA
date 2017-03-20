@@ -38,8 +38,16 @@ export class OfficeComponent implements OnInit {
     usersVideos: Array<Video>;
     loadMore = true;
     error: string;
+    videoForm: FormGroup;
+    file: File;
+    preloader: boolean = false;
+    successMess: boolean = false;
   constructor(private officeService: OfficeService, private router: Router, private cookies: CookieService) {
-       
+       this.videoForm = new FormGroup({
+      'title': new FormControl('', Validators.required),
+      'descr': new FormControl('', Validators.required),
+      'videoFile': new FormControl('', Validators.required),
+    });
 
    }
   
@@ -63,9 +71,11 @@ export class OfficeComponent implements OnInit {
  loadAndAdd(){
    this.officeService.getUsersVideos(this.pageNum).subscribe((res)=>{
       
-      let buf = this.usersVideos
+      let buf = this.usersVideos;
+      owlInstance.owlCarousel('destroy');
       this.usersVideos = buf.concat(res);
       let position;
+
       (this.usersVideos.length%4==0)? position=this.usersVideos.length/4-1:position=Math.floor(this.usersVideos.length/4)-1;
        setTimeout(() => owlRefresh(position), 0);
       this.pageNum++;
@@ -75,9 +85,9 @@ export class OfficeComponent implements OnInit {
  }
 loadOne(oneVideo){
     let buf = this.usersVideos;
+     owlInstance.owlCarousel('destroy');
      this.usersVideos.unshift(oneVideo);
-      let position;
-      (this.usersVideos.length%4==0)? position=this.usersVideos.length/4-1:position=Math.floor(this.usersVideos.length/4)-1;
+      let position = 0;
        setTimeout(() => owlRefresh(position), 0);
 }
   sendVideo(){
@@ -139,7 +149,28 @@ printData(data)
 });
   
   }
+Send(){
+     var data = new FormData();
+     data.append('file', this.file);
+     data.append('title', this.videoForm.controls['title'].value);
+     data.append('descr', this.videoForm.controls['descr'].value);
+     this.officeService.postVideo(data).subscribe(res=>{
+         console.log(res)
+         this.successMess = true;
 
+         
+         setTimeout(()=>this.successMess=false,3000);
+         this.preloader = false;
+         this.loadOne(res);
+    });
+  }
+
+  fileChanged(event) {
+    let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+        let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+        let files: FileList = target.files;
+        this.file = files[0];
+  }
 
 
 
@@ -157,7 +188,8 @@ printData(data)
 
 
 function owlRefresh(length){
-  owlInstance.owlCarousel('destroy');
+  //owlInstance.owlCarousel('destroy');
+ 
   owlInstance = $('.owl-carousel').owlCarousel({
     loop:false,
     margin:10,

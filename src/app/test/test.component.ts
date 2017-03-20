@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {TestService} from './test.service'
 import 'rxjs/add/operator/map';
 import { Observable } from 'RxJS/Rx';
 import {HttpInterceptor} from '../reg/interceptor.service';
 import {CookieService} from 'angular2-cookie/core';
 import {Router} from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
+import {GlobalVars} from '../globalVars'
 
 import {
   Http,
@@ -30,28 +32,42 @@ declare var jQuery;
 })
 export class TestComponent implements OnInit {
   way: string;
-  constructor(private interceptor: HttpInterceptor) { }
-   getTest(){
-      this.interceptor.get('test/guy').map(res=>res.text()).subscribe((resp)=>{console.log(resp)});
+  videoForm: FormGroup;
+  file: File;
+ 
 
-   }
+  constructor(private interceptor: HttpInterceptor) { 
+    this.videoForm = new FormGroup({
+      'title': new FormControl('', Validators.required),
+      'descr': new FormControl('', Validators.required),
+      'videoFile': new FormControl('', Validators.required),
+    });
+
+
+  }
+   
 
   ngOnInit() {
   }
  
+
   Send(){
-        var data = new FormData(jQuery('form')[0]);
-        jQuery.ajax({
-    url: 'http://localhost:6885/api/Upload',
-    data: data,
-    cache: false,
-    contentType: false,
-    processData: false,
-    type: 'POST',
-    success: function(data){
-        alert(data);
-    }
-});
+     var data = new FormData();
+     data.append('file', this.file);
+     data.append('title', this.videoForm.controls['title'].value);
+     data.append('descr', this.videoForm.controls['descr'].value);
+     this.interceptor.post('videos/videosave', data).map(res=>res.json()).subscribe(res=>console.log(res));
+  }
+
+  
+
+
+
+  fileChanged(event) {
+    let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+        let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+        let files: FileList = target.files;
+        this.file = files[0];
   }
 
 }

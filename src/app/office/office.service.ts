@@ -14,6 +14,10 @@ export class OfficeService {
   getUsersVideos(numberP):Observable<Array<Video>>{
     return this.http.get('videos/office/page/'+numberP).map(res=>res.json());
   }
+  postVideo(data){
+        return this.http.post('videos/videosave', data).map(res=>res.json());
+
+  }
 
 
 }

@@ -32,12 +32,18 @@ body {
     padding-bottom: 15px;
 }
 
+.carousel-height {
+    min-height: 368px;
+}
+
 .bg-primary.load-success {
     background-color: $bluegreen;
     color: white;
-    opacity: 0;
     padding: 10px;
     margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .btn-green {
