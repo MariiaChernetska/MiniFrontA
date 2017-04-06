@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'RxJS/Rx';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 
 import {Headers} from '@angular/http';
 import {RequestOptions} from '@angular/http';
@@ -25,7 +25,7 @@ export class RegService {
       (error)=>{
         let er1:RegError = JSON.parse(error._body);
             this.regFail(er1);
-            console.log(error)
+           
       }
       );
   }
@@ -42,7 +42,7 @@ export class RegService {
          (error)=>{
             let er:LoginError = JSON.parse(error._body);
             this.fail(er);
-            console.log(error)
+          
          });
      }
      logOut(){

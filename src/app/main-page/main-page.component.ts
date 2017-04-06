@@ -3,14 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import {VideoService} from './video.service';
 import {Video} from './video';
 import {VideosObj} from './video';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 import {Subscription} from 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css'],
   providers:[VideoService]
 })
 export class MainPageComponent implements OnInit {
@@ -20,10 +19,14 @@ export class MainPageComponent implements OnInit {
   pageNum: number;
   orderBy: OrderType;
   order: OrderDirection;
+    
   pagesArray: Array<number>;
   from: number;
   to: number;
   showPagination = false;
+    
+    
+    
   constructor(private videoService: VideoService) {
      this.videosObj = new VideosObj();
 
@@ -69,7 +72,7 @@ export class MainPageComponent implements OnInit {
           this.pagesArray.push(i);
         }
 
-        console.log(res)
+        
         if(res.pagesAmount>1){
             this.showPagination = true;
         }

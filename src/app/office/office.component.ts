@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OfficeService} from './office.service';
 import {Video} from '../main-page/video';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
   Http,
@@ -19,11 +19,10 @@ import {Router} from '@angular/router';
 var owlInstance;
 declare var $;
 declare var jQuery;
-import {HttpInterceptor} from '../reg/interceptor.service';
+import {HttpInterceptor} from '../shared/interceptor.service';
 @Component({
   selector: 'app-office',
   templateUrl: './office.component.html',
-  styleUrls: ['./office.component.scss'],
    providers: [OfficeService, {
     provide: HttpInterceptor,
     deps: [XHRBackend, RequestOptions, CookieService],
@@ -57,7 +56,7 @@ export class OfficeComponent implements OnInit {
       if(this.usersVideos.length===4){
           this.loadMore = false;
       }
-     console.log(res)
+    
        setTimeout(() => owlL(), 0);
        this.pageNum++;
     },
@@ -108,7 +107,7 @@ loadOne(oneVideo){
     
     function printData(data){
         result = data
-        console.log(data)
+    
         mythis.loadOne(result)
          mythis.error  = ""
     }
@@ -153,9 +152,9 @@ Send(){
      var data = new FormData();
      data.append('file', this.file);
      data.append('title', this.videoForm.controls['title'].value);
-     data.append('descr', this.videoForm.controls['descr'].value);
+     data.append('description', this.videoForm.controls['descr'].value);
      this.officeService.postVideo(data).subscribe(res=>{
-         console.log(res)
+       
          this.successMess = true;
 
          

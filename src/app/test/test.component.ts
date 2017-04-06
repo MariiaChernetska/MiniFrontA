@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {TestService} from './test.service'
 import 'rxjs/add/operator/map';
 import { Observable } from 'RxJS/Rx';
-import {HttpInterceptor} from '../reg/interceptor.service';
+import {HttpInterceptor} from '../shared/interceptor.service';
 import {CookieService} from 'angular2-cookie/core';
 import {Router} from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import {GlobalVars} from '../globalVars'
+import {GlobalVars} from '../shared/globalVars'
 
 import {
   Http,

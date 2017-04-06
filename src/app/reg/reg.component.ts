@@ -6,7 +6,6 @@ import {RegService, RegError} from './reg.service'
 @Component({
   selector: 'app-reg',
   templateUrl: './reg.component.html',
-  styleUrls: ['./reg.component.scss'],
   providers: [RegService]
 })
 export class RegComponent implements OnInit {
@@ -83,9 +82,9 @@ export class RegComponent implements OnInit {
            password: (<FormArray>this.registerForm.controls['passwords']).controls[0].value,
            repeatPassword: (<FormArray>this.registerForm.controls['passwords']).controls[1].value,
         };
-        this.regService.sendRegData(objToSend).subscribe((res)=>{this.regService.regSuccess(); console.log(res)}, 
+        this.regService.sendRegData(objToSend).subscribe((res)=>{this.regService.regSuccess();}, 
               (error)=>{
-                 console.log(error);
+                 
                     if(error !== undefined){
                      this.regService.regFail(JSON.parse(error._body)); 
                   }

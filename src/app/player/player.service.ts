@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {GlobalVars} from '../globalVars'
+import {GlobalVars} from '../shared/globalVars'
 import { Observable } from 'RxJS/Rx';
 import {VideoPlayer} from './videoPlayer';
-import {HttpInterceptor} from '../reg/interceptor.service'
+import {HttpInterceptor} from '../shared/interceptor.service'
 
 @Injectable()
 

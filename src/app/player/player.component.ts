@@ -3,7 +3,7 @@ import {PlayerService} from './player.service';
 import { ActivatedRoute }     from '@angular/router';
 import { Observable }         from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 import {VideoPlayer} from './videoPlayer';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {CookieService} from 'angular2-cookie/core';
@@ -18,11 +18,10 @@ import {
   Request,
   XHRBackend
 } from '@angular/http';
-import {HttpInterceptor} from '../reg/interceptor.service';
+import {HttpInterceptor} from '../shared/interceptor.service';
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
-  styleUrls: ['./player.component.scss'],
   providers: [PlayerService, CookieService, RegService, {
     provide: HttpInterceptor,
     deps: [XHRBackend, RequestOptions, CookieService],
@@ -68,7 +67,7 @@ export class PlayerComponent implements OnInit, DoCheck {
       this.playerService.getVideo(this.videoId).subscribe( res => {
         this.videoRes = res;         
         this.showCommentForm = (this.regService.isLoggedIn() && !this.videoRes.isCommented);
-       console.log(this.videoRes);
+    
       });
     });
     
@@ -84,8 +83,13 @@ export class PlayerComponent implements OnInit, DoCheck {
       this.starsCount=0;
       this.commentForm.controls['comment'].setValue('');
       this.videoRes.ratings.unshift(res);
-    })
-    console.log(commentSnd)
+       this.playerService.getVideo(this.videoId).subscribe( res => {
+        this.videoRes = res;         
+       
+      });
+    });
+    
+ 
   }
 
 

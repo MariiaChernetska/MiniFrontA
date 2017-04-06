@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {HttpInterceptor} from '../reg/interceptor.service'
+import {HttpInterceptor} from '../shared/interceptor.service'
 
 import 'rxjs/add/operator/map';
 import { Observable } from 'RxJS/Rx';
 import {Video} from '../main-page/video';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 
 @Injectable()
 export class OfficeService {

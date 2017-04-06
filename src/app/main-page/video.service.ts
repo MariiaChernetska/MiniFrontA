@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Video} from './video';
 import {VideosObj} from './video';
-import {GlobalVars} from '../globalVars';
+import {GlobalVars} from '../shared/globalVars';
 import {Http, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'RxJS/Rx';

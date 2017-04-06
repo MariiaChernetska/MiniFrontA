@@ -5,7 +5,7 @@ import { RegComponent } from './reg/reg.component';
 import { OfficeComponent } from './office/office.component';
 import { LoginComponent } from './login/login.component';
 import { PlayerComponent } from './player/player.component';
-import {CanActivateGuardService} from './can-activate-guard.service'
+import {CanActivateGuardService} from './shared/can-activate-guard.service'
  import { NotFoundComponent } from './not-found/not-found.component';
 import { TestComponent } from './test/test.component';
 

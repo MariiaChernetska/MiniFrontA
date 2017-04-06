@@ -7,7 +7,7 @@ import { CanActivate }    from '@angular/router';
 export class RouteGuard  {
 
   canActivate() {
-    console.log('AuthGuard#canActivate called');
+   
     return true;
   }
 

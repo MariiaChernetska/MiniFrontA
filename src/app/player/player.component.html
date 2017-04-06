@@ -7,8 +7,17 @@
             </video>
             <h4 class="video-title">{{videoRes.title}}</h4>
             <p class="video-descr">{{videoRes.description}}</p>
-            <rating [(ngModel)]="videoRes.rating" [readonly]="true"></rating>
-            <p class="author pull-right">Added by: {{videoRes.userName}}</p>
+            <div class="col-sm-4">
+                <rating [(ngModel)]="videoRes.rating" [readonly]="true" class="video-rate"></rating>
+            </div>
+            <div class="col-sm-4">
+                {{videoRes.dateAdded | date:'medium'}}
+            </div>
+            <div class="col-sm-4">
+                <p class="author pull-right">Added by: {{videoRes.userName}}</p>
+
+            </div>
+
         </div>
 
     </div>

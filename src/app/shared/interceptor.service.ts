@@ -12,7 +12,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import {CookieService} from 'angular2-cookie/core';
-import {GlobalVars} from '../globalVars'
+import {GlobalVars} from './globalVars'
 import {Router} from '@angular/router';
 
 
@@ -75,7 +75,7 @@ export class HttpInterceptor extends Http {
     }
      let authData:any = this.cookies.getObject('authorizationData');
      if(authData){
-       console.log(authData)
+     
          if (options.headers == null) {
               options.headers = new Headers({
             'Authorization': `Basic ${authData.token}`

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { RegService } from './reg/reg.service';
+import { RegService } from '../reg/reg.service';
 
 @Injectable()
 export class CanActivateGuardService implements CanActivate {
